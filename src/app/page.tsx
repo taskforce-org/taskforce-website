@@ -2,29 +2,7 @@ import Link from "next/link";
 
 import { Reveal } from "@/components/reveal";
 import { Button } from "@/components/ui/button";
-
-const services = [
-  {
-    label: "Websites & E-commerce",
-    blurb: "Marketing sites and storefronts that load fast and convert.",
-  },
-  {
-    label: "Custom Systems & Dashboards",
-    blurb: "Internal tools, admin panels, and reporting built around real work.",
-  },
-  {
-    label: "Desktop Software & Automation",
-    blurb: "Native utilities and scripted pipelines that remove manual steps.",
-  },
-  {
-    label: "Integrations, Redesign & Support",
-    blurb: "Connect the stack, modernise the surface, keep it running.",
-  },
-  {
-    label: "3D & Interactive Experiences",
-    blurb: "Web-based product viewers and motion-led storytelling.",
-  },
-];
+import { serviceLines } from "@/lib/services";
 
 const selectedWork = [
   {
@@ -80,11 +58,11 @@ export default function Home() {
         </h2>
 
         <ul className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {services.map((service, index) => (
+          {serviceLines.map((service, index) => (
             <li key={service.label}>
               <Reveal delay={index * 0.05}>
                 <Link
-                  href="#services"
+                  href="/services"
                   className="flex h-full flex-col rounded-3xl bg-mist-gray p-8 transition-colors hover:bg-fog-white"
                 >
                   <span className="text-[14px] text-ash-gray">Service</span>

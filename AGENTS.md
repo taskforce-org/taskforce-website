@@ -81,6 +81,12 @@ Per Feature (on `feat/FEAT-<N>-<short-slug>`, never on `develop`/`main`):
 
 Always @-reference or pin `openspec/changes/<name>/tasks.md` and relevant `specs/` while applying.
 
+## Local server
+
+`npm run dev` and `npm start` use **port 3000**. README: http://localhost:3000.
+
+When verifying, always use 3000. If that port is busy, stop the process on 3000, then start again on 3000. Never bump to 3001, 3002, or another port as a workaround.
+
 ## Product context
 
 - Organization / workspace: Task Force
