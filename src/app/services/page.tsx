@@ -42,7 +42,10 @@ export default function ServicesPage() {
           {serviceLines.map((service, index) => (
             <li key={service.label}>
               <Reveal delay={index * 0.05}>
-                <article className="flex h-full flex-col rounded-3xl bg-mist-gray p-8">
+                <Link
+                  href={`/services/${service.slug}`}
+                  className="flex h-full flex-col rounded-3xl bg-mist-gray p-8 transition-colors hover:bg-fog-white"
+                >
                   <span className="text-[14px] text-ash-gray">Service</span>
                   <span className="mt-3 text-[20px] font-medium text-ink-black">
                     {service.label}
@@ -50,7 +53,10 @@ export default function ServicesPage() {
                   <p className="mt-3 text-[16px] leading-[1.5] text-ink-black">
                     {service.blurb}
                   </p>
-                </article>
+                  <span className="mt-6 text-[16px] text-ink-black">
+                    Learn more →
+                  </span>
+                </Link>
               </Reveal>
             </li>
           ))}

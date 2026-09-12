@@ -43,7 +43,7 @@ The visual system is **Steep**, documented in [`design/steep/DESIGN.md`](design/
 ## Layout
 
 ```
-src/app/         routes (/, /services, /contact) and global styles
+src/app/         routes (/, /services, /services/[slug], /contact) and global styles
 src/components/  site chrome and shared UI
 design/steep/    Steep design system reference
 openspec/        OpenSpec changes and specs
