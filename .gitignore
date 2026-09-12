@@ -33,3 +33,7 @@ coverage/
 # Editor noise (keep shared .cursor commands/skills)
 .idea/
 *.swp
+
+# TypeScript
+*.tsbuildinfo
+next-env.d.ts
