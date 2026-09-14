@@ -8,9 +8,14 @@ export function SiteFooter() {
         <p className="text-[15px] text-slate-gray">
           Software studio — websites, custom systems, automation.
         </p>
-        <Link href="/contact" className="text-[16px] text-ink-black">
-          Start a Project →
-        </Link>
+        <div className="flex flex-wrap items-center gap-6">
+          <Link href="/technology" className="text-[16px] text-ink-black">
+            Technology
+          </Link>
+          <Link href="/contact" className="text-[16px] text-ink-black">
+            Start a Project →
+          </Link>
+        </div>
       </div>
     </footer>
   );

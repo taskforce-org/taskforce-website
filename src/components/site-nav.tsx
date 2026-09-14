@@ -6,10 +6,10 @@ const navLinks = [
   { label: "Home", href: "/" },
   { label: "Services", href: "/services" },
   { label: "Work", href: "#work" },
-  { label: "Process", href: "#" },
-  { label: "Studio", href: "#" },
+  { label: "Process", href: "/process" },
+  { label: "Studio", href: "/studio" },
   { label: "Careers", href: "#" },
-  { label: "FAQ", href: "#" },
+  { label: "FAQ", href: "/faq" },
   { label: "Contact", href: "/contact" },
 ];
 
