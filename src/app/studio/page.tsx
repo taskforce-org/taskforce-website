@@ -27,9 +27,14 @@ export default function StudioPage() {
         </Reveal>
 
         <Reveal delay={0.16}>
-          <div className="mt-10">
+          <div className="mt-10 flex flex-wrap items-center gap-3">
             <Button asChild>
               <Link href={studioContent.cta.href}>{studioContent.cta.label}</Link>
+            </Button>
+            <Button asChild variant="ghost">
+              <Link href={studioContent.technologyLink.href}>
+                {studioContent.technologyLink.label}
+              </Link>
             </Button>
           </div>
         </Reveal>

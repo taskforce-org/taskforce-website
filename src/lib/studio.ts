@@ -23,6 +23,7 @@ export type StudioContent = {
   principles: readonly StudioPrinciple[];
   callout: StudioSection;
   cta: StudioCta;
+  technologyLink: StudioCta;
 };
 
 export const studioContent: StudioContent = {
@@ -64,5 +65,9 @@ export const studioContent: StudioContent = {
   cta: {
     label: "Start a Project",
     href: "/contact",
+  },
+  technologyLink: {
+    label: "Technology & capabilities",
+    href: "/technology",
   },
 };
