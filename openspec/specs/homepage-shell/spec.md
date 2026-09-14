@@ -31,7 +31,7 @@ The homepage MUST present Task Force as the product identity in the document tit
 
 ### Requirement: Site chrome
 
-The site MUST show a top navigation bar and a footer on the homepage. Navigation MUST include Home plus items: Services, Work, Process, Studio, Careers, FAQ, and Contact. Home MUST link to the site root. Services MUST link to `/services`. Studio MUST link to `/studio`. Remaining non-Home items MAY link to `#` or to stub routes that do not 404.
+The site MUST show a top navigation bar and a footer on the homepage. Navigation MUST include Home plus items: Services, Work, Process, Studio, Careers, FAQ, and Contact. Home MUST link to the site root. Services MUST link to `/services`. Studio MUST link to `/studio`. Process MUST link to `/process`. Remaining non-Home items MAY link to `#` or to stub routes that do not 404.
 
 #### Scenario: Nav labels present
 
@@ -52,6 +52,11 @@ The site MUST show a top navigation bar and a footer on the homepage. Navigation
 
 - **WHEN** a visitor activates the Studio nav item
 - **THEN** they reach `/studio`
+
+#### Scenario: Process nav goes to process page
+
+- **WHEN** a visitor activates the Process nav item
+- **THEN** they reach `/process`
 
 ### Requirement: Hero and value proposition
 
