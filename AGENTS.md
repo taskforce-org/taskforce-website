@@ -81,9 +81,25 @@ Per Feature (on `feat/FEAT-<N>-<short-slug>`, never on `develop`/`main`):
 
 Always @-reference or pin `openspec/changes/<name>/tasks.md` and relevant `specs/` while applying.
 
+## Local server
+
+`npm run dev` and `npm start` use **port 3000**. README: http://localhost:3000.
+
+When verifying, always use 3000. If that port is busy, stop the process on 3000, then start again on 3000. Never bump to 3001, 3002, or another port as a workaround.
+
 ## Product context
 
 - Organization / workspace: Task Force
 - Business: Task Force
 - Product: Website
 - Sibling businesses (do not mix unless asked): ArtirSay, Goldak
+
+<!-- BEGIN:nextjs-agent-rules -->
+
+# This is NOT the Next.js you know
+
+This version has breaking changes — APIs, conventions, and file structure may all differ from your training data. Read the relevant guide in `node_modules/next/dist/docs/` (resolved from this file's directory; in monorepos the `next` package may not be visible from the repo root) before writing any code. Heed deprecation notices.
+
+This block is written and re-added by `next dev` — verify at `node_modules/next/dist/server/lib/generate-agent-files.js`. Removing it from a diff only re-creates the uncommitted change; committing it with your work keeps the tree clean.
+
+<!-- END:nextjs-agent-rules -->
