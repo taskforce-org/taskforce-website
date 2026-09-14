@@ -2,47 +2,43 @@
 
 ## Purpose
 
-Public `/services` overview that lists Task Force’s five service lines at index depth so visitors can choose a line before dedicated detail pages exist.
+Five-line services overview on the homepage (`#services`) so visitors can scan Task Force’s lines of work. `/services` redirects to that section.
 
 ## Requirements
 
 ### Requirement: Services overview is reachable
 
-The site MUST serve a Services overview at `/services` that loads without blocking runtime errors. The document title MUST identify Task Force and Services.
+The site MUST present the five-line services overview as the homepage section with id `services`. A request to `/services` MUST NOT render a standalone overview page. It MUST send the visitor to `/#services`.
 
-#### Scenario: Overview loads
+#### Scenario: Overview loads on home
+
+- **WHEN** a visitor opens the homepage and scrolls to the services section
+- **THEN** they see the five service lines and the document title still identifies Task Force
+
+#### Scenario: Old overview URL redirects
 
 - **WHEN** a visitor opens `/services`
-- **THEN** the page renders without blocking runtime errors and the document title includes Task Force and Services
+- **THEN** they reach `/#services` and they do not see a standalone Services overview page
 
 ### Requirement: Five service lines at overview depth
 
-The overview MUST present these five labels: Websites & E-commerce; Custom Systems & Dashboards; Desktop Software & Automation; Integrations, Redesign & Support; 3D & Interactive Experiences. Each line MUST include short supporting copy. The page MUST remain an index (no per-line scope, process, or deliverables on the overview itself). Each line’s primary link MUST go to that line’s `/services/[slug]` detail page.
+The overview section MUST present these five labels: Websites & E-commerce; Custom Systems & Dashboards; Desktop Software & Automation; Integrations, Redesign & Support; 3D & Interactive Experiences. Each line MUST include short supporting copy. The section MUST remain an index (no per-line scope, process, or deliverables on the overview itself). Cards MUST be equal in size, MUST NOT show a “Service” eyebrow, and MUST present “Learn more” that becomes more visible with motion on hover. Cards MUST NOT navigate to `/services/[slug]`.
 
 #### Scenario: Five lines visible
 
-- **WHEN** a visitor views `/services`
-- **THEN** they see those five labels with supporting copy and the page itself is not a service detail page
+- **WHEN** a visitor views the homepage services section
+- **THEN** they see those five labels with supporting copy and the section itself is not a service detail page
 
-#### Scenario: Cards go to detail pages
+#### Scenario: Cards do not open detail pages
 
-- **WHEN** a visitor activates an overview service card
-- **THEN** they reach that line’s `/services/[slug]` page
-
-### Requirement: Start a Project from overview
-
-The overview MUST include a primary call-to-action labeled “Start a Project” that navigates to `/contact`.
-
-#### Scenario: CTA present
-
-- **WHEN** a visitor views `/services`
-- **THEN** they see a “Start a Project” control that goes to `/contact`
+- **WHEN** a visitor activates a homepage service card
+- **THEN** they do not reach `/services/[slug]`
 
 ### Requirement: Steep on the overview
 
-The overview MUST use the Steep token set (Paper White, Ink Black, mist cards at 24px radius). Blush Peach MAY appear at most once on this page. The page MUST NOT introduce a new palette.
+The overview section MUST use the Steep token set (Paper White, Ink Black, mist or glass cards at 24px radius). Blush Peach MAY appear at most once on the homepage. The section MUST NOT introduce a new palette.
 
 #### Scenario: Cards use Steep radius
 
-- **WHEN** a visitor views service cards on `/services`
+- **WHEN** a visitor views service cards on the homepage
 - **THEN** those cards use a 24px corner radius
