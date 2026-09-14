@@ -26,7 +26,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html
       lang="en"
-      className={`${displaySerif.variable} ${bodySans.variable} h-full antialiased`}
+      className={`${displaySerif.variable} ${bodySans.variable} h-full scroll-smooth scroll-pt-28 antialiased`}
     >
       <body className="min-h-full flex flex-col bg-paper-white text-ink-black">
         <SiteNav />
