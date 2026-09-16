@@ -6,6 +6,7 @@ import { Surface } from "@/components/surface";
 import { Button } from "@/components/ui/button";
 import { processContent } from "@/lib/process";
 import { serviceLines } from "@/lib/services";
+import { siteCta } from "@/lib/site-cta";
 import { studioContent } from "@/lib/studio";
 
 const selectedWork = [
@@ -47,7 +48,7 @@ export default function Home() {
         <Reveal delay={0.16}>
           <div className="mt-10 flex flex-wrap items-center gap-3">
             <Button asChild>
-              <Link href="/contact">Start a Project</Link>
+              <Link href={siteCta.href}>{siteCta.label}</Link>
             </Button>
             <Button asChild variant="soft">
               <Link href="/#work">See selected work</Link>

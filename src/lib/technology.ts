@@ -15,6 +15,7 @@ export type TechnologySection = {
 
 export type TechnologyCta = {
   label: string;
+  labelFa: string;
   href: string;
 };
 
@@ -107,7 +108,8 @@ export const technologyContent: TechnologyContent = {
     body: "We pick the surface that will last, not a fashionable list. Tell us what you are building and we will say what belongs.",
   },
   cta: {
-    label: "Start a Project",
+    label: "Tell us the work",
+    labelFa: "کار را بگویید",
     href: "/contact",
   },
 };

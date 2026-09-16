@@ -10,6 +10,7 @@ export type ProcessSection = {
 
 export type ProcessCta = {
   label: string;
+  labelFa: string;
   href: string;
 };
 
@@ -53,7 +54,8 @@ export const processContent: ProcessContent = {
     body: "Tell us what you are building. We will come back with scope, timing, and the next step.",
   },
   cta: {
-    label: "Start a Project",
+    label: "Tell us the work",
+    labelFa: "کار را بگویید",
     href: "/contact",
   },
 };

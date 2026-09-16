@@ -1,5 +1,7 @@
 import Link from "next/link";
 
+import { siteCta } from "@/lib/site-cta";
+
 export function SiteFooter() {
   return (
     <footer className="w-full">
@@ -12,8 +14,8 @@ export function SiteFooter() {
           <Link href="/technology" className="text-[16px] text-copy">
             Technology
           </Link>
-          <Link href="/contact" className="text-[16px] text-copy">
-            Start a Project →
+          <Link href={siteCta.href} className="text-[16px] text-copy">
+            {siteCta.label} →
           </Link>
         </div>
       </div>

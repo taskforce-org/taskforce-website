@@ -5,6 +5,7 @@ import { HomeSectionLinks } from "@/components/home-section-links";
 import { Reveal } from "@/components/reveal";
 import { Surface } from "@/components/surface";
 import { Button } from "@/components/ui/button";
+import { InquiryForm } from "@/components/inquiry-form";
 import { contactContent } from "@/lib/contact";
 
 export const metadata: Metadata = {
@@ -45,6 +46,19 @@ export default function ContactPage() {
         </Reveal>
 
         <HomeSectionLinks />
+      </section>
+
+      <section className="mx-auto max-w-[1200px] px-6 pb-20">
+        <Reveal>
+          <Surface className="p-10">
+            <h2 className="text-[26px] leading-[1.18] tracking-[-0.23px] text-copy">
+              {contactContent.form.heading}
+            </h2>
+            <div className="mt-8">
+              <InquiryForm />
+            </div>
+          </Surface>
+        </Reveal>
       </section>
 
       <section className="mx-auto max-w-[1200px] px-6 pb-20">

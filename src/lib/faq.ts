@@ -10,6 +10,7 @@ export type FaqSection = {
 
 export type FaqCta = {
   label: string;
+  labelFa: string;
   href: string;
 };
 
@@ -64,10 +65,11 @@ export const faqContent: FaqContent = {
   ],
   callout: {
     heading: "Still deciding?",
-    body: "Start a project when you have a surface in mind. We will say what belongs and what can wait.",
+    body: "Tell us the work when you have a surface in mind. We will say what belongs and what can wait.",
   },
   cta: {
-    label: "Start a Project",
+    label: "Tell us the work",
+    labelFa: "کار را بگویید",
     href: "/contact",
   },
 };

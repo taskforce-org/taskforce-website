@@ -10,15 +10,22 @@ Public website for the **Task Force** software studio. Product code for the Webs
 
 - Node.js 20 or newer (developed on Node 22)
 - npm 10 or newer
+- PostgreSQL 16 for inquiry submits (optional to view the site; required to store a lead)
 
 ## Run locally
 
 ```bash
 npm install
+cp .env.example .env
+docker compose up -d
+npx prisma migrate deploy
+npx prisma generate
 npm run dev
 ```
 
 Then open http://localhost:3000.
+
+Staff bootstrap env vars in `.env.example` are unused until the CRM admin Feature.
 
 ## Scripts
 
@@ -34,7 +41,7 @@ Then open http://localhost:3000.
 - Next.js (App Router) + TypeScript
 - Tailwind CSS v4
 - shadcn-style copy-in components in `src/components/ui`
-- Motion (`motion/react`) for light section reveals
+- Prisma + PostgreSQL for project inquiries
 
 ## Design system
 
