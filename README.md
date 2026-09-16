@@ -38,13 +38,14 @@ Then open http://localhost:3000.
 
 ## Design system
 
-The visual system is **Steep**, documented in [`design/steep/DESIGN.md`](design/steep/DESIGN.md) with tokens in [`design/steep/tailwind-theme.css`](design/steep/tailwind-theme.css). Those tokens are mirrored into `src/app/globals.css`. Do not introduce colors outside the Steep palette; Signifier and Sohne resolve to the documented fallbacks (Source Serif 4, Inter).
+The visual system is **Soft UI**, documented in [`design/soft-ui/DESIGN.md`](design/soft-ui/DESIGN.md) with tokens in [`design/soft-ui/tailwind-theme.css`](design/soft-ui/tailwind-theme.css). `src/app/globals.css` imports those tokens. Do not use archived Steep (`design/archive/steep/`) on live pages. Signifier and Sohne resolve to Source Serif 4 and Inter.
 
 ## Layout
 
 ```
-src/app/         routes (/, /services, /services/[slug], /contact) and global styles
-src/components/  site chrome and shared UI
-design/steep/    Steep design system reference
-openspec/        OpenSpec changes and specs
+src/app/              routes (/, /faq, /contact, /careers, /technology) and global styles
+src/components/       site chrome and shared UI
+design/soft-ui/       live Soft UI reference
+design/archive/steep/ archived Steep files (do not import)
+openspec/             OpenSpec changes and specs
 ```

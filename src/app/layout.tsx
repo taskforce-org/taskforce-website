@@ -28,7 +28,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       lang="en"
       className={`${displaySerif.variable} ${bodySans.variable} h-full scroll-smooth scroll-pt-28 antialiased`}
     >
-      <body className="min-h-full flex flex-col bg-paper-white text-ink-black">
+      <body className="min-h-full flex flex-col bg-canvas text-copy">
         <SiteNav />
         <main className="flex-1">{children}</main>
         <SiteFooter />

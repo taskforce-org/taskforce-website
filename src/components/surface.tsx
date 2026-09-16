@@ -1,7 +1,8 @@
-import { cn } from "@/lib/utils";
 import type { ReactNode } from "react";
 
-export function GlassCard({
+import { cn } from "@/lib/utils";
+
+export function Surface({
   children,
   className,
 }: {
@@ -11,7 +12,7 @@ export function GlassCard({
   return (
     <article
       className={cn(
-        "group flex h-full flex-col rounded-3xl border border-ink-black/8 bg-mist-gray/80 p-8 shadow-subtle backdrop-blur-sm",
+        "group flex h-full flex-col rounded-3xl bg-canvas p-8 shadow-soft-out transition-[box-shadow] hover:shadow-soft-hover",
         className,
       )}
     >
