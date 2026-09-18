@@ -1,0 +1,14 @@
+{
+  "kind": "collectionType",
+  "collectionName": "members",
+  "info": { "singularName": "member", "pluralName": "members", "displayName": "Member" },
+  "options": { "draftAndPublish": true },
+  "attributes": {
+    "slug": { "type": "uid", "targetField": "name", "required": true },
+    "name": { "type": "string", "required": true },
+    "speciality": { "type": "string" },
+    "link": { "type": "string" },
+    "story": { "type": "richtext" },
+    "timeline": { "type": "json" }
+  }
+}

@@ -1,23 +1,36 @@
 @import "tailwindcss";
-@import "../../design/soft-ui/tailwind-theme.css";
 
-@theme {
-  --font-signifier: var(--font-display), "Signifier", "GT Sectra",
-    "Tiempos Headline", ui-serif, Georgia, serif;
-  --font-sohne: var(--font-body), "Sohne", Inter, ui-sans-serif, system-ui,
-    sans-serif;
+:root {
+  --canvas: #ffffff;
+  --copy: #1d1d1f;
+}
+
+html[data-theme="black"] {
+  --canvas: #000000;
+  --copy: #f5f5f7;
+}
+
+html[data-theme="black"] .tf-logo {
+  filter: invert(1);
+}
+
+@theme inline {
+  --color-canvas: var(--canvas);
+  --color-copy: var(--copy);
+  --font-sans: var(--font-en), ui-sans-serif, system-ui, sans-serif;
 }
 
 body {
-  background: var(--color-canvas);
-  color: var(--color-copy);
-  font-family: var(--font-sohne);
-  font-size: var(--text-body);
-  line-height: var(--leading-body);
+  background: var(--canvas);
+  color: var(--copy);
+  font-family: var(--font-sans);
 }
 
-h1,
-h2 {
-  font-family: var(--font-signifier);
-  font-weight: 400;
+html[lang="fa"] body {
+  font-family: var(--font-fa), var(--font-sans);
+}
+
+::selection {
+  background: var(--copy);
+  color: var(--canvas);
 }

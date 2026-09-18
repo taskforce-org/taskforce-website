@@ -1,0 +1,14 @@
+{
+  "kind": "collectionType",
+  "collectionName": "works",
+  "info": { "singularName": "work", "pluralName": "works", "displayName": "Work" },
+  "options": { "draftAndPublish": true },
+  "attributes": {
+    "slug": { "type": "uid", "targetField": "title", "required": true },
+    "title": { "type": "string", "required": true },
+    "kind": { "type": "string" },
+    "summary": { "type": "text" },
+    "body": { "type": "richtext" },
+    "image": { "type": "media", "allowedTypes": ["images"], "multiple": false }
+  }
+}
