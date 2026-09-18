@@ -1,37 +1,37 @@
 import type { Metadata } from "next";
-import { Inter, Source_Serif_4 } from "next/font/google";
-import "./globals.css";
-import { SiteFooter } from "@/components/site-footer";
-import { SiteNav } from "@/components/site-nav";
+import { Inter, Vazirmatn } from "next/font/google";
 
-const displaySerif = Source_Serif_4({
-  variable: "--font-display",
-  subsets: ["latin"],
-  weight: ["400"],
-});
+import "./globals.css";
 
 const bodySans = Inter({
-  variable: "--font-body",
+  variable: "--font-en",
   subsets: ["latin"],
-  weight: ["400", "500"],
+  weight: ["400", "500", "600"],
+});
+
+const faSans = Vazirmatn({
+  variable: "--font-fa",
+  subsets: ["arabic", "latin"],
+  weight: ["400", "500", "600"],
 });
 
 export const metadata: Metadata = {
-  title: "Task Force — Studio for software that holds up",
+  title: "Task Force",
   description:
-    "Task Force is a software studio building websites, custom systems, and automation with senior engineering quality.",
+    "Task Force is a software studio building websites, custom systems, and automation.",
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html
-      lang="en"
-      className={`${displaySerif.variable} ${bodySans.variable} h-full antialiased`}
+      lang="fa"
+      dir="rtl"
+      data-theme="white"
+      suppressHydrationWarning
+      className={`${bodySans.variable} ${faSans.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col bg-paper-white text-ink-black">
-        <SiteNav />
-        <main className="flex-1">{children}</main>
-        <SiteFooter />
+      <body className="flex min-h-full flex-col bg-canvas text-copy">
+        {children}
       </body>
     </html>
   );

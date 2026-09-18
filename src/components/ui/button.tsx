@@ -1,22 +1,18 @@
-import * as React from "react";
 import { Slot } from "@radix-ui/react-slot";
 import { cva, type VariantProps } from "class-variance-authority";
+import * as React from "react";
 
 import { cn } from "@/lib/utils";
 
 const buttonVariants = cva(
-  "inline-flex items-center justify-center whitespace-nowrap rounded-full text-[16px] font-normal transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ink-black disabled:pointer-events-none disabled:opacity-50",
+  "inline-flex items-center justify-center whitespace-nowrap rounded-full text-[15px] font-medium tracking-tight transition-opacity focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-copy/40 disabled:pointer-events-none disabled:opacity-40",
   {
     variants: {
       variant: {
-        // Steep Pill Button — Filled
-        filled:
-          "bg-ink-black text-paper-white border border-ink-black hover:bg-ink-black/90",
-        // Steep Pill Button — Ghost
-        ghost:
-          "bg-transparent text-ink-black border border-ink-black hover:bg-mist-gray",
-        // Steep Text Link with Arrow
-        link: "text-ink-black hover:underline px-0",
+        filled: "bg-copy text-canvas hover:opacity-80",
+        soft: "border border-current/15 bg-transparent text-copy hover:bg-copy/5",
+        ghost: "bg-transparent text-copy hover:opacity-70",
+        link: "text-copy underline-offset-4 hover:underline px-0",
       },
       size: {
         default: "h-11 px-5",

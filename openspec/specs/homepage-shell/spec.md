@@ -2,23 +2,18 @@
 
 ## Purpose
 
-Public homepage shell that identifies Task Force, presents placeholder services and work, and offers a Start a Project path so the site can run locally before later Features add real pages and forms.
+Public homepage that identifies Task Force, lists services, work, blog, testimonials, and team shorts, and uses a three-slot oval. Locale-prefixed URLs; Farsi is the default.
 
 ## Requirements
 
 ### Requirement: Homepage is reachable locally
 
-The Website product MUST serve a homepage at the site root that loads without blocking runtime errors. The repository MUST document a start command that a developer can follow to run the site locally.
+The Website product MUST serve a homepage (at `/fa` after `/` redirects) that loads without blocking runtime errors. The repository MUST document a start command.
 
 #### Scenario: Homepage loads
 
 - **WHEN** a developer follows the documented start command and opens the site root
-- **THEN** the homepage renders without blocking runtime errors
-
-#### Scenario: Start command is documented
-
-- **WHEN** a developer opens the project README
-- **THEN** they find the commands required to install dependencies and start the local server
+- **THEN** they reach the Farsi homepage without blocking runtime errors
 
 ### Requirement: Task Force identity
 
@@ -26,118 +21,69 @@ The homepage MUST present Task Force as the product identity in the document tit
 
 #### Scenario: Identity in title and heading
 
-- **WHEN** a visitor opens the homepage
+- **WHEN** a visitor opens `/fa`
 - **THEN** the page title and a visible heading identify the site as Task Force
 
 ### Requirement: Site chrome
 
-The site MUST show a top navigation bar and a footer on the homepage. Navigation MUST include Home plus items: Services, Work, Process, Studio, Careers, FAQ, and Contact. Home MUST link to the site root. Services MUST link to `/services`. Studio MUST link to `/studio`. Process MUST link to `/process`. FAQ MUST link to `/faq`. Contact MUST link to `/contact`. Remaining non-Home items MAY link to `#` or to stub routes that do not 404. Navigation MUST NOT include a Technology item. The footer MUST include a Technology link to `/technology`.
+The site MUST show a top navigation oval and a footer on every public page that uses the site shell. The oval MUST keep a pill shape and MUST contain exactly three slots in left-to-right order regardless of document `dir`: the Task Force mark, the current page name, and Contact. Labels MAY translate. The oval MUST NOT include a language switch. The footer MUST include Task Force identity and MUST NOT include a Technology link or “Tell us the work”.
 
 #### Scenario: Nav labels present
 
-- **WHEN** a visitor views the homepage
-- **THEN** they see nav items for Home, Services, Work, Process, Studio, Careers, FAQ, and Contact
+- **WHEN** a visitor views the Farsi homepage
+- **THEN** they see the mark, a translated Home page name, and Contact, and they do not see Process, Careers, FAQ, or a language control in the oval
 
 #### Scenario: Footer present
 
 - **WHEN** a visitor views the homepage
-- **THEN** they see a footer that includes Task Force identity
+- **THEN** they see a footer that includes Task Force identity and no Technology link
 
-#### Scenario: Services nav goes to overview
+#### Scenario: Contact us opens overlay
 
-- **WHEN** a visitor activates the Services nav item
-- **THEN** they reach `/services`
-
-#### Scenario: Studio nav goes to studio page
-
-- **WHEN** a visitor activates the Studio nav item
-- **THEN** they reach `/studio`
-
-#### Scenario: Process nav goes to process page
-
-- **WHEN** a visitor activates the Process nav item
-- **THEN** they reach `/process`
-
-#### Scenario: FAQ nav goes to FAQ page
-
-- **WHEN** a visitor activates the FAQ nav item
-- **THEN** they reach `/faq`
-
-#### Scenario: Contact nav goes to contact page
-
-- **WHEN** a visitor activates the Contact nav item
-- **THEN** they reach `/contact`
-
-#### Scenario: Footer technology link goes to technology page
-
-- **WHEN** a visitor activates the footer Technology link
-- **THEN** they reach `/technology`
-
-### Requirement: Hero and value proposition
-
-The homepage MUST include a hero with a value proposition that communicates studio coding quality and team experience.
-
-#### Scenario: Hero visible
-
-- **WHEN** a visitor opens the homepage
-- **THEN** they see a hero headline and supporting copy stating the studio value proposition
+- **WHEN** a visitor activates Contact
+- **THEN** the short contact overlay opens and they do not go to `/contact`
 
 ### Requirement: Featured services strip
 
-The homepage MUST show a featured services strip with five placeholder service labels: Websites & E-commerce; Custom Systems & Dashboards; Desktop Software & Automation; Integrations, Redesign & Support; 3D & Interactive Experiences. Each teaser’s primary link MUST go to `/services`. The strip MUST NOT be a full service detail page.
+The homepage MUST show a services section with id `services`. Cards MUST come from the locale seed (or published Strapi when wired). Cards MAY differ in size. Activating a card MUST go to `/[locale]/services/[slug]`. Cards MUST NOT open a modal.
 
-#### Scenario: Five service teasers
+#### Scenario: Card goes to service page
 
-- **WHEN** a visitor views the homepage
-- **THEN** they see those five service labels as teasers, not as full service pages
-
-#### Scenario: Teasers go to overview
-
-- **WHEN** a visitor activates a homepage service teaser
-- **THEN** they reach `/services`
+- **WHEN** a visitor on `/fa` activates a service card for slug `example`
+- **THEN** they reach `/fa/services/example`
 
 ### Requirement: Selected work teasers
 
-The homepage MUST show a selected-work section with static placeholder cards. Cards MUST NOT require a CMS or live project data.
+The homepage MUST show a portfolio section with id `work` as a vertical scroll. Activating an entry MUST go to `/[locale]/work/[slug]`.
 
-#### Scenario: Static work cards
+#### Scenario: Work list
 
-- **WHEN** a visitor views the homepage
-- **THEN** they see static work teaser cards that render without fetching a CMS
+- **WHEN** a visitor views the homepage work section
+- **THEN** they can open a work page under the current locale
 
-### Requirement: Start a Project CTA
+### Requirement: Hero CTAs
 
-The homepage MUST include a primary call-to-action labeled “Start a Project”. The CTA MUST navigate to `/contact`. `/contact` MUST load as the Contact / Start a Project page and MUST NOT include a project-inquiry form.
+The homepage MUST NOT include “Tell us the work” or “See selected work” in the hero.
 
-#### Scenario: CTA present
+#### Scenario: CTA absent
 
-- **WHEN** a visitor views the homepage
-- **THEN** they see a primary control labeled “Start a Project”
+- **WHEN** a visitor views the homepage hero
+- **THEN** they do not see those two controls
 
-#### Scenario: Contact page has no form
+### Requirement: Home holds Process and Studio sections
 
-- **WHEN** a visitor follows the CTA to `/contact`
-- **THEN** the page loads without a project-inquiry form
+The homepage MUST NOT include Process or Studio sections.
 
-### Requirement: Steep visual system
-
-The homepage MUST use the Steep token set: Paper White canvas, Ink Black text, Blush Peach as the only chromatic accent (at most one peach card), serif display/headline type, and 24px radius on content cards. The system MUST NOT introduce a new color palette. Signifier MAY be substituted with the listed fallbacks (GT Sectra, Tiempos Headline, Source Serif 4, or Georgia).
-
-#### Scenario: Peach accent is rationed
+#### Scenario: Process and Studio off home
 
 - **WHEN** a visitor views the homepage
-- **THEN** at most one peach accent card is present and remaining surfaces stay achromatic (paper, mist, fog, ink)
-
-#### Scenario: Cards use Steep radius
-
-- **WHEN** a visitor views content cards on the homepage
-- **THEN** those cards use a 24px corner radius
+- **THEN** they do not see sections with ids `process` or `studio`
 
 ### Requirement: Out of scope stays absent
 
-The homepage shell MUST NOT include CRM, job board, CMS editing, bilingual/RTL UI, real forms, admin, live portfolio data, or 3D/WebGL scenes.
+The homepage shell MUST NOT include CRM admin, job board, or 3D/WebGL scenes.
 
-#### Scenario: No functional backend surfaces
+#### Scenario: No those surfaces
 
-- **WHEN** a visitor uses only the homepage and contact stub
-- **THEN** they cannot submit an inquiry, apply for a job, or switch language
+- **WHEN** a visitor uses only the homepage
+- **THEN** they cannot apply for a job or open a CRM

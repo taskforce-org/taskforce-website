@@ -1,43 +1,49 @@
+"use client";
+
+import Image from "next/image";
 import Link from "next/link";
 
-import { Button } from "@/components/ui/button";
+import { ContactOverlay } from "@/components/contact-overlay";
+import { useChrome } from "@/components/chrome";
+import { localized, ui, type Locale } from "@/lib/i18n";
 
-const navLinks = [
-  { label: "Home", href: "/" },
-  { label: "Services", href: "/services" },
-  { label: "Work", href: "#work" },
-  { label: "Process", href: "/process" },
-  { label: "Studio", href: "/studio" },
-  { label: "Careers", href: "#" },
-  { label: "FAQ", href: "/faq" },
-  { label: "Contact", href: "/contact" },
-];
+export function SiteNav({ locale }: { locale: Locale }) {
+  const { pageName } = useChrome();
+  const text = ui[locale];
 
-export function SiteNav() {
   return (
-    <header className="w-full">
-      <nav className="mx-auto flex max-w-[1200px] items-center justify-between px-6 py-6">
-        <Link href="/" className="text-[16px] font-medium text-ink-black">
-          Task Force
-        </Link>
-
-        <ul className="hidden items-center gap-8 lg:flex">
-          {navLinks.map((link) => (
-            <li key={link.label}>
-              <Link
-                href={link.href}
-                className="py-0.5 text-[16px] text-ink-black hover:underline"
-              >
-                {link.label}
-              </Link>
-            </li>
-          ))}
-        </ul>
-
-        <Button asChild size="sm">
-          <Link href="/contact">Start a Project</Link>
-        </Button>
+    <header className="sticky top-0 z-50 w-full px-4 py-4">
+      <nav aria-label="Primary" className="mx-auto flex justify-center">
+        <div
+          dir="ltr"
+          className="flex w-full max-w-[720px] items-center justify-between gap-3 rounded-full border border-current/10 bg-canvas/80 px-2 py-1.5 backdrop-blur-xl"
+        >
+          <Link
+            href={localized(locale)}
+            className="flex h-10 w-10 shrink-0 items-center justify-center"
+            aria-label="Task Force home"
+          >
+            <Image
+              src="/tf-logo.jpg"
+              alt=""
+              width={28}
+              height={28}
+              className="tf-logo h-7 w-7 object-contain"
+            />
+          </Link>
+          <p className="min-w-0 truncate text-center text-[15px] font-medium tracking-tight">
+            {pageName}
+          </p>
+          <button
+            type="button"
+            className="shrink-0 rounded-full bg-copy px-4 py-2 text-[14px] text-canvas"
+            popoverTarget="contact-pop"
+          >
+            {text.contact}
+          </button>
+        </div>
       </nav>
+      <ContactOverlay locale={locale} />
     </header>
   );
 }

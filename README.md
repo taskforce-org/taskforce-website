@@ -1,50 +1,58 @@
 # Task Force — Website
 
-Public website for the **Task Force** software studio. Product code for the Website product under the Task Force Business.
+Public website for the **Task Force** software studio.
 
-- Management (Objectives, Initiatives, Epics, Features) lives one level up in the Business folder; ClickUp is the source of truth.
-- Execution runs through OpenSpec changes in [`openspec/changes/`](openspec/changes).
+- Management lives one level up; ClickUp is the source of truth.
+- Execution: OpenSpec in [`openspec/changes/`](openspec/changes).
 - Agent instructions: [`AGENTS.md`](AGENTS.md).
 
 ## Requirements
 
-- Node.js 20 or newer (developed on Node 22)
-- npm 10 or newer
+- Node.js 20 or newer
+- PostgreSQL 16 to store contact notes
+- Docker for Postgres and self-hosted Strapi
 
 ## Run locally
 
 ```bash
 npm install
+cp .env.example .env
+docker compose up -d
+npx prisma migrate deploy
+npx prisma generate
 npm run dev
 ```
 
-Then open http://localhost:3000.
+Open http://localhost:3000.
+
+Strapi: http://localhost:1337 (see [`cms/README.md`](cms/README.md)). Set `STRAPI_URL` after the first admin and published types exist. Until then the site uses seed content in `src/lib/cms.ts`.
 
 ## Scripts
 
 | Command | What it does |
 |---------|--------------|
-| `npm run dev` | Start the local dev server on port 3000 |
+| `npm run dev` | Dev server on port 3000 |
 | `npm run build` | Production build |
-| `npm start` | Serve the production build |
-| `npm run lint` | Run ESLint |
+| `npm start` | Serve production build |
+| `npm run lint` | ESLint |
 
 ## Stack
 
-- Next.js (App Router) + TypeScript
+- Next.js App Router + TypeScript
 - Tailwind CSS v4
-- shadcn-style copy-in components in `src/components/ui`
-- Motion (`motion/react`) for light section reveals
+- Self-hosted Strapi for services, work, blog, testimonials, team
+- Prisma + PostgreSQL for the short contact overlay
 
-## Design system
+## Design
 
-The visual system is **Steep**, documented in [`design/steep/DESIGN.md`](design/steep/DESIGN.md) with tokens in [`design/steep/tailwind-theme.css`](design/steep/tailwind-theme.css). Those tokens are mirrored into `src/app/globals.css`. Do not introduce colors outside the Steep palette; Signifier and Sohne resolve to the documented fallbacks (Source Serif 4, Inter).
+Apple-like. White canvas on `/`, `/blog`, `/about`. Black canvas on `/services/[slug]` and `/work/[slug]`. Soft UI is retired.
 
 ## Layout
 
 ```
-src/app/         routes (/, /services, /services/[slug], /contact) and global styles
-src/components/  site chrome and shared UI
-design/steep/    Steep design system reference
-openspec/        OpenSpec changes and specs
+src/app/         routes (/, /about, /blog, /services/[slug], /work/[slug])
+src/components/  oval, overlay, zoom media
+src/lib/cms.ts   Strapi fetch + seed
+cms/schemas/     Strapi content-type JSON
+public/images/   generated software/startup stills
 ```

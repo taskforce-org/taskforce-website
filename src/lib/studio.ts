@@ -10,6 +10,7 @@ export type StudioSection = {
 
 export type StudioCta = {
   label: string;
+  labelFa?: string;
   href: string;
 };
 
@@ -63,7 +64,8 @@ export const studioContent: StudioContent = {
     body: "We will come back with scope, timing, and the trade-offs worth knowing before you commit.",
   },
   cta: {
-    label: "Start a Project",
+    label: "Tell us the work",
+    labelFa: "کار را بگویید",
     href: "/contact",
   },
   technologyLink: {

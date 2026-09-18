@@ -1,0 +1,13 @@
+{
+  "kind": "collectionType",
+  "collectionName": "posts",
+  "info": { "singularName": "post", "pluralName": "posts", "displayName": "Post" },
+  "options": { "draftAndPublish": true },
+  "attributes": {
+    "slug": { "type": "uid", "targetField": "title", "required": true },
+    "title": { "type": "string", "required": true },
+    "excerpt": { "type": "text" },
+    "body": { "type": "richtext" },
+    "image": { "type": "media", "allowedTypes": ["images"], "multiple": false }
+  }
+}

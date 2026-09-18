@@ -1,0 +1,9 @@
+{
+  "kind": "singleType",
+  "collectionName": "site_setting",
+  "info": { "singularName": "site-setting", "pluralName": "site-settings", "displayName": "Site setting" },
+  "options": { "draftAndPublish": true },
+  "attributes": {
+    "testimonialsOn": { "type": "boolean", "default": true }
+  }
+}

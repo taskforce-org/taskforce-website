@@ -1,0 +1,47 @@
+services:
+  db:
+    image: postgres:16
+    environment:
+      POSTGRES_USER: taskforce
+      POSTGRES_PASSWORD: taskforce
+      POSTGRES_DB: taskforce
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+
+  strapi-db:
+    image: postgres:16
+    environment:
+      POSTGRES_USER: strapi
+      POSTGRES_PASSWORD: strapi
+      POSTGRES_DB: strapi
+    ports:
+      - "5433:5432"
+    volumes:
+      - strapidb:/var/lib/postgresql/data
+
+  strapi:
+    image: node:22
+    working_dir: /srv/app
+    command: sh -c "if [ ! -f package.json ]; then npx --yes create-strapi-app@5.23.4 . --quickstart --no-run --skip-cloud --ts --use-npm --dbclient postgres --dbhost strapi-db --dbport 5432 --dbname strapi --dbusername strapi --dbpassword strapi --dbsrv false; fi; npm install && npm run develop -- --watch-admin=false"
+    environment:
+      DATABASE_CLIENT: postgres
+      DATABASE_HOST: strapi-db
+      DATABASE_PORT: 5432
+      DATABASE_NAME: strapi
+      DATABASE_USERNAME: strapi
+      DATABASE_PASSWORD: strapi
+      HOST: 0.0.0.0
+      PORT: 1337
+    ports:
+      - "1337:1337"
+    depends_on:
+      - strapi-db
+    volumes:
+      - strapiapp:/srv/app
+
+volumes:
+  pgdata:
+  strapidb:
+  strapiapp:

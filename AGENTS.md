@@ -19,7 +19,7 @@ Management (why / priority) lives one level up in the Business folder; Execution
 | Epics | `../../Epics/` |
 | Features (handoff tickets) | `../../Features/` |
 | Requests (intake only) | `../../Requests/` |
-| OpenSpec changes | `openspec/changes/<change-name>/` |
+| OpenSpec changes | `openspec/changes/<change-name>/` (this repo only — never a Business-root `openspec/`) |
 | Main specs (after sync) | `openspec/specs/` |
 
 ## Framework (Management → Execution)
