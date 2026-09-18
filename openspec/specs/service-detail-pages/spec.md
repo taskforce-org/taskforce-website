@@ -2,15 +2,15 @@
 
 ## Purpose
 
-Former per-line service URLs must not 404. They redirect to the homepage services section. Standalone detail pages are retired.
+Each service has a black-canvas page at `/[locale]/services/[slug]`.
 
 ## Requirements
 
-### Requirement: Five detail pages are reachable
+### Requirement: Service pages are reachable
 
-The site MUST NOT serve standalone detail pages at `/services/[slug]` for `websites-ecommerce`, `custom-systems-dashboards`, `desktop-software-automation`, `integrations-redesign-support`, or `3d-interactive-experiences`. A request to any of those URLs MUST send the visitor to `/#services`.
+The site MUST serve `/[locale]/services/[slug]` for a known slug with that locale’s copy. Unknown slugs MUST NOT render another service’s body.
 
-#### Scenario: Known slug redirects
+#### Scenario: Known slug
 
-- **WHEN** a visitor opens `/services/websites-ecommerce`
-- **THEN** they reach `/#services` and they do not see a standalone detail page
+- **WHEN** a visitor opens `/fa/services/websites-ecommerce`
+- **THEN** they see Farsi copy for that service on a black canvas
