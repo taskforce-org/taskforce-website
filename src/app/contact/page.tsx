@@ -3,17 +3,31 @@ import Link from "next/link";
 
 import { HomeSectionLinks } from "@/components/home-section-links";
 import { Reveal } from "@/components/reveal";
+import { InquiryForm } from "@/components/inquiry-form";
+import { ServicePicker } from "@/components/service-picker";
 import { Surface } from "@/components/surface";
 import { Button } from "@/components/ui/button";
-import { InquiryForm } from "@/components/inquiry-form";
 import { contactContent } from "@/lib/contact";
+import { getServiceBySlug } from "@/lib/services";
 
 export const metadata: Metadata = {
   title: contactContent.documentTitle,
   description: contactContent.description,
 };
 
-export default function ContactPage() {
+function firstParam(value?: string | string[]) {
+  return Array.isArray(value) ? value[0] : value;
+}
+
+export default async function ContactPage({
+  searchParams,
+}: {
+  searchParams: Promise<{ service?: string | string[] }>;
+}) {
+  const params = await searchParams;
+  const initialServiceSlug = getServiceBySlug(
+    firstParam(params.service) ?? "",
+  )?.slug;
   const cards = [
     contactContent.availability,
     contactContent.estimates,
@@ -49,13 +63,20 @@ export default function ContactPage() {
       </section>
 
       <section className="mx-auto max-w-[1200px] px-6 pb-20">
+        <ServicePicker
+          variant="name"
+          heading={contactContent.servicesHeading}
+        />
+      </section>
+
+      <section className="mx-auto max-w-[1200px] px-6 pb-20">
         <Reveal>
           <Surface className="p-10">
             <h2 className="text-[26px] leading-[1.18] tracking-[-0.23px] text-copy">
               {contactContent.form.heading}
             </h2>
             <div className="mt-8">
-              <InquiryForm />
+              <InquiryForm initialServiceSlug={initialServiceSlug} />
             </div>
           </Surface>
         </Reveal>

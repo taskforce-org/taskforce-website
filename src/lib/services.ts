@@ -68,3 +68,7 @@ export const serviceLines: readonly ServiceLine[] = [
 export function getServiceBySlug(slug: string): ServiceLine | undefined {
   return serviceLines.find((line) => line.slug === slug);
 }
+
+export function isKnownServiceSlug(slug: string): boolean {
+  return Boolean(getServiceBySlug(slug));
+}

@@ -32,6 +32,7 @@ export type ContactFormCopy = {
   thanksHeading: string;
   thanksBody: string;
   thanksClose: string;
+  serviceTag: string;
 };
 
 export type ContactContent = {
@@ -39,6 +40,7 @@ export type ContactContent = {
   description: string;
   heading: string;
   intro: string;
+  servicesHeading: string;
   availability: ContactSection;
   estimates: ContactSection;
   nextStep: ContactSection;
@@ -54,6 +56,7 @@ export const contactContent: ContactContent = {
   heading: "Tell us the work",
   intro:
     "Tell us the surface you need. We come back with scope, timing, and the trade-offs before anyone commits.",
+  servicesHeading: "A line of work",
   availability: {
     heading: "Availability",
     body: "We take a small number of projects so each one gets senior time. If the work fits, we say so. If it does not, we say that too.",
@@ -95,5 +98,6 @@ export const contactContent: ContactContent = {
     thanksHeading: "Thank you",
     thanksBody: "We have the inquiry. We will come back with a path.",
     thanksClose: "Back to contact",
+    serviceTag: "Service",
   },
 };

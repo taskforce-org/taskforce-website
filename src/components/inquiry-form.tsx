@@ -1,22 +1,28 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 import { submitInquiry } from "@/app/actions/submit-inquiry";
 import { Button } from "@/components/ui/button";
 import { Surface } from "@/components/surface";
+import { APPLY_SERVICE_EVENT } from "@/lib/apply-service";
+import { contactContent } from "@/lib/contact";
 import {
   MAX_LINKS,
   MAX_PHONES,
   NEED_MAX_CHARS,
   TIMELINE_OPTIONS,
 } from "@/lib/inquiry";
-import { contactContent } from "@/lib/contact";
+import { getServiceBySlug, isKnownServiceSlug } from "@/lib/services";
 
 const fieldClass =
   "mt-2 w-full rounded-2xl bg-canvas px-4 py-3 text-[16px] text-copy shadow-soft-in outline-none focus-visible:ring-2 focus-visible:ring-accent";
 
-export function InquiryForm() {
+export function InquiryForm({
+  initialServiceSlug,
+}: {
+  initialServiceSlug?: string;
+}) {
   const copy = contactContent.form;
   const [links, setLinks] = useState<string[]>([""]);
   const [phones, setPhones] = useState<string[]>([""]);
@@ -24,6 +30,32 @@ export function InquiryForm() {
   const [errors, setErrors] = useState<Record<string, string>>({});
   const [pending, setPending] = useState(false);
   const [thanksOpen, setThanksOpen] = useState(false);
+  const [serviceSlug, setServiceSlug] = useState(
+    initialServiceSlug && isKnownServiceSlug(initialServiceSlug)
+      ? initialServiceSlug
+      : "",
+  );
+  const serviceLabel = serviceSlug
+    ? getServiceBySlug(serviceSlug)?.label
+    : undefined;
+
+  useEffect(() => {
+    function onApply(event: Event) {
+      const slug = (event as CustomEvent<{ slug?: string }>).detail?.slug;
+      if (slug && isKnownServiceSlug(slug)) {
+        setServiceSlug(slug);
+      }
+    }
+
+    window.addEventListener(APPLY_SERVICE_EVENT, onApply);
+    return () => window.removeEventListener(APPLY_SERVICE_EVENT, onApply);
+  }, []);
+
+  useEffect(() => {
+    if (initialServiceSlug && isKnownServiceSlug(initialServiceSlug)) {
+      document.getElementById("inquire")?.scrollIntoView();
+    }
+  }, [initialServiceSlug]);
 
   async function onSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -40,6 +72,7 @@ export function InquiryForm() {
     setLinks([""]);
     setPhones([""]);
     setNeedLength(0);
+    setServiceSlug("");
     setThanksOpen(true);
   }
 
@@ -60,6 +93,17 @@ export function InquiryForm() {
           <p className="text-[16px] text-copy" role="alert">
             {errors.form}
           </p>
+        ) : null}
+
+        {serviceSlug && serviceLabel ? (
+          <div>
+            <p className="text-[16px] text-copy">
+              <span className="inline-flex rounded-full bg-canvas px-4 py-2 shadow-soft-out">
+                {copy.serviceTag}: {serviceLabel}
+              </span>
+            </p>
+            <input type="hidden" name="serviceSlug" value={serviceSlug} />
+          </div>
         ) : null}
 
         <div>

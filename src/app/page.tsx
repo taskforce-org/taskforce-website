@@ -2,10 +2,10 @@ import Link from "next/link";
 
 import { HomeBand } from "@/components/home-band";
 import { Reveal } from "@/components/reveal";
+import { ServicePicker } from "@/components/service-picker";
 import { Surface } from "@/components/surface";
 import { Button } from "@/components/ui/button";
 import { processContent } from "@/lib/process";
-import { serviceLines } from "@/lib/services";
 import { siteCta } from "@/lib/site-cta";
 import { studioContent } from "@/lib/studio";
 
@@ -62,25 +62,7 @@ export default function Home() {
           What we do
         </h2>
 
-        <ul className="mt-10 grid auto-rows-fr gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {serviceLines.map((service, index) => (
-            <li key={service.label} className="h-full">
-              <Reveal delay={index * 0.05} className="h-full">
-                <Surface>
-                  <span className="text-[20px] font-medium text-copy">
-                    {service.label}
-                  </span>
-                  <span className="mt-3 text-[16px] leading-[1.5] text-copy">
-                    {service.blurb}
-                  </span>
-                  <span className="mt-auto pt-6 text-[15px] text-copy opacity-40 translate-y-0.5 transition duration-300 group-hover:translate-y-0 group-hover:opacity-100">
-                    Learn more
-                  </span>
-                </Surface>
-              </Reveal>
-            </li>
-          ))}
-        </ul>
+        <ServicePicker variant="card" />
       </HomeBand>
 
       <HomeBand id="work">

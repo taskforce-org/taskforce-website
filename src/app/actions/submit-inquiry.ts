@@ -9,6 +9,7 @@ import {
   NEED_MAX_CHARS,
   TIMELINE_OPTIONS,
 } from "@/lib/inquiry";
+import { getServiceBySlug } from "@/lib/services";
 
 const timelineValues = TIMELINE_OPTIONS.map((option) => option.value) as [
   (typeof TIMELINE_OPTIONS)[number]["value"],
@@ -95,6 +96,9 @@ export async function submitInquiry(
   }
 
   const budgetMinAmount = Math.round(Number(parsed.data.budgetMinUsd) * 100);
+  const serviceSlug =
+    getServiceBySlug(String(formData.get("serviceSlug") ?? "").trim())?.slug ??
+    null;
 
   try {
     await prisma.lead.create({
@@ -107,6 +111,7 @@ export async function submitInquiry(
         budgetMinAmount,
         budgetCurrency: "usd",
         timeline: parsed.data.timeline,
+        serviceSlug,
         links: {
           create: parsed.data.links.map((url, index) => ({
             url,
